@@ -90,7 +90,6 @@ typedef struct {
 
 ## Known Limitations
 
-- Undocumented opcodes (0x08, 0x10, 0x18, 0x20, 0x28, 0x30, 0x38) halt the CPU rather than acting as NOP aliases.
 - The I/O and opcode dispatch tables are global statics, so only one emulated CPU instance is supported per process.
 - The cycle counter is a signed `int` and will overflow for long-running programs.
 - `__builtin_parity` is a GCC/Clang extension; a portable fallback is needed for other compilers.
