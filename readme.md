@@ -1,13 +1,13 @@
 # i8080 — Intel 8080 CPU Emulator
 
-A cycle-accurate emulator of the Intel 8080 processor written in C. Implements the full documented instruction set, a pluggable I/O handler system, and software interrupt delivery.
+A cycle accurate emulator of the Intel 8080 processor written in C. Implements the full documented instruction set, a pluggable I/O handler system, and software interrupt delivery.
 
 ## Features
 
 - Complete documented 8080 instruction set (NOP through RST vectors)
 - Accurate flag behaviour: Sign, Zero, Parity, Carry, and Auxiliary Carry
 - Correct PSW push/pop quirks (bit 1 always set, bits 3 and 5 always clear)
-- Dispatch-table-based execution for fast opcode lookup
+- Dispatch table based execution for fast opcode lookup
 - Pluggable I/O port handlers via `io_register_read` / `io_register_write`
 - Software interrupt delivery via `raise_interrupt`
 - Cycle counting for timing-sensitive applications
@@ -19,7 +19,7 @@ A cycle-accurate emulator of the Intel 8080 processor written in C. Implements t
 cc -O2 -o i8080 i8080.c
 ```
 
-No external dependencies. A C99-compatible compiler is required. GCC and Clang are both supported; the parity flag computation uses `__builtin_parity`, so MSVC is not currently supported without a small shim.
+No external dependencies. A C99 compatible compiler is required. GCC and Clang are both supported; the parity flag computation uses `__builtin_parity`, so MSVC is not currently supported without a small shim.
 
 ## Usage
 
@@ -29,7 +29,7 @@ Run with a binary ROM image:
 ./i8080 program.bin
 ```
 
-If no file is provided, the emulator runs a minimal built-in stub (two NOPs followed by HLT).
+If no file is provided, the emulator runs a minimal built in stub (two NOPs followed by HLT).
 
 On exit, the final PC and total cycle count are printed:
 
@@ -91,7 +91,7 @@ typedef struct {
 ## Known Limitations
 
 - The I/O and opcode dispatch tables are global statics, so only one emulated CPU instance is supported per process.
-- The cycle counter is a signed `int` and will overflow for long-running programs.
+- The cycle counter is a signed `int` and will overflow for long running programs.
 - `__builtin_parity` is a GCC/Clang extension; a portable fallback is needed for other compilers.
 
 ## License
